@@ -55,3 +55,8 @@ Be Clear and Concise: Use clear language and avoid unnecessary jargon.
 Stay Organized: Keep sections well-organized and logically structured.
 Be Flexible: The GDD is a living document and will evolve throughout development.
 Collaborate: Involve your team in the creation and review of the GDD to ensure all aspects are covered.
+
+
+# Need to figure out: 
+
+- how to use git with godot properly
