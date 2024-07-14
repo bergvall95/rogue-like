@@ -60,3 +60,4 @@ Collaborate: Involve your team in the creation and review of the GDD to ensure a
 # Need to figure out: 
 
 - how to use git with godot properly
+- multiplayer
