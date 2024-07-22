@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://du06to6goic8n"]
+[gd_scene load_steps=7 format=3 uid="uid://du06to6goic8n"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_k26c4"]
+[ext_resource type="Texture2D" uid="uid://caxl5jjtbugh1" path="res://textures/696.jpg" id="1_7y3lf"]
+[ext_resource type="PackedScene" uid="uid://d2cr6moroeial" path="res://textures/GLB format/bridge-straight.glb" id="2_jtgnv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ttwi8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,12 +16,22 @@ sky = SubResource("Sky_y6ry8")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="World" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if7wj"]
+albedo_texture = ExtResource("1_7y3lf")
+uv1_triplanar = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
-mesh = SubResource("PlaneMesh_k26c4")
-skeleton = NodePath("")
+[node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r6jyl")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_if7wj")
+size = Vector3(1000, 1, 500)
+
+[node name="Walls" type="Node3D" parent="Map"]
+
+[node name="bridge-straight2" parent="." instance=ExtResource("2_jtgnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247, 1, -228)
