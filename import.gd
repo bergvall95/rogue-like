@@ -17,3 +17,5 @@ func iterate(node):
 		node.name = "modified_" + node.name
 		for child in node.get_children():
 			iterate(child)
+		
+		return node;

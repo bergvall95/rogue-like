@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkcpfvq0u4rq"]
+
+[ext_resource type="PackedScene" uid="uid://cwa2ly8op4s1s" path="res://GLB format/siege-tower.glb" id="1_7ditg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_psw4j"]
+points = PackedVector3Array(0.39849, 2.52945, 0.0846604, -0.9828, 0.200469, -0.415252, 0.206548, 0.253611, -0.4718, 0.214703, 0.206129, 0.4717, -0.41067, 2.58127, 0.404723, -0.41067, 2.58127, -0.423371, 1.0089, 1.71329, -0.304948, -1.00252, 0.372895, 0.444198, 1.0089, 1.71329, 0.325775, 0.4848, 0.204672, -0.413794, 0.18059, 2.69962, 0.444198, 0.398394, 2.30326, -0.479868, 0.18059, 2.69962, -0.423371, 0.469138, 0.244767, 0.4193, -0.78783, 0.33378, -0.4693, -0.6683, 0.209748, 0.47038, 0.40211, 2.3114, 0.465645, -1.00252, 0.372895, -0.423371, -0.31966, 2.3114, 0.465645, -0.316653, 2.30326, -0.479868, -0.947307, 0.245, 0.4193, 0.402303, 2.53998, -0.0662582, 0.929951, 1.71329, -0.344422, 0.101637, 2.69962, 0.444198, -0.644184, 0.253843, -0.4718, 0.101637, 2.69962, -0.423371, -0.781668, 0.250653, 0.4693, -0.21378, 2.62031, 0.444198, 0.2752, 0.27671, -0.462777, 0.929951, 1.75282, -0.344422)
+
+[node name="siege-tower2" instance=ExtResource("1_7ditg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="siege-tower" index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="siege-tower/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_psw4j")

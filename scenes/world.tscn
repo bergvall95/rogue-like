@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://du06to6goic8n"]
+
+[ext_resource type="Script" path="res://import.gd" id="1_kqa86"]
+[ext_resource type="Texture2D" uid="uid://ropg81xk23pf" path="res://textures/patterned_cobblestone_02_diff_4k.jpg" id="2_fylei"]
+[ext_resource type="PackedScene" uid="uid://ok0pw5textp2" path="res://GLB format/wall-narrow-stairs.glb" id="3_y2ddn"]
+[ext_resource type="PackedScene" uid="uid://db082vyv2snho" path="res://GLB format/bridge-draw.glb" id="4_t38gj"]
+[ext_resource type="PackedScene" uid="uid://b6v5hamruxwgq" path="res://GLB format/bridge-straight-pillar.glb" id="5_txrni"]
+[ext_resource type="PackedScene" uid="uid://c1jwp5iwc4wlf" path="res://GLB format/bridge-straight.glb" id="6_j5eu0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ttwi8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y6ry8"]
+sky_material = SubResource("ProceduralSkyMaterial_ttwi8")
+
+[sub_resource type="Environment" id="Environment_r6jyl"]
+background_mode = 2
+sky = SubResource("Sky_y6ry8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if7wj"]
+albedo_texture = ExtResource("2_fylei")
+uv1_triplanar = true
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_kqa86")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r6jyl")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_if7wj")
+size = Vector3(1000, 1, 500)
+
+[node name="Walls" type="Node3D" parent="Map"]
+
+[node name="wall-narrow-stairs2" parent="." instance=ExtResource("3_y2ddn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0.51, -122)
+
+[node name="modified_bridge-draw2" parent="." instance=ExtResource("4_t38gj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -192.328, 1.6, -118.8)
+
+[node name="modified_bridge-straight-pillar2" parent="." instance=ExtResource("5_txrni")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -192.3, 0.5, -117.3)
+
+[node name="bridge-straight2" parent="." instance=ExtResource("6_j5eu0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -192.3, 0.5, -118.2)

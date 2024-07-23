@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvxakougtx47"]
+
+[ext_resource type="PackedScene" uid="uid://cnehaknbcqet4" path="res://GLB format/tower-square-top-roof-high-windows.glb" id="1_ghjr4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i3j10"]
+points = PackedVector3Array(-0.465536, 0.00153165, -0.465536, 0.502854, 0.317156, 0.502857, 0.502854, 0.317156, -0.508572, -0.0601337, 1.06369, -0.0600377, -0.508572, 0.317156, 0.502857, 0.461134, 0, 0.461138, -0.508572, 0.317156, -0.508572, 0.459818, 0.00153156, -0.465536, -0.465536, 0.00153165, 0.459822, 0.0554338, 1.07299, 0.0554356, -0.0106435, 0.759356, -0.386839, -0.0106435, 0.759356, 0.381124, 0.054433, 1.06384, -0.0600547, 0.485851, 0.0595845, 0.485855, -0.0601337, 1.06369, 0.0544178, -0.491642, 0.0761205, -0.491642, -0.491642, 0.0761205, 0.485928, 0.485924, 0.0761205, -0.491642, 0.485854, 0.0595821, -0.474924, -0.474921, 0.0595845, 0.485855, 0.472869, 0.0224908, 0.472872, 0.472871, 0.0224883, -0.461908, -0.461906, 0.0224908, 0.472872)
+
+[node name="tower-square-top-roof-high-windows2" instance=ExtResource("1_ghjr4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tower-square-top-roof-high-windows" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower-square-top-roof-high-windows/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_i3j10")

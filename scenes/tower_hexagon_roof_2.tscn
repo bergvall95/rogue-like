@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://buqegvi1aawfq"]
+
+[ext_resource type="PackedScene" uid="uid://y280th0wnt5m" path="res://GLB format/tower-hexagon-roof.glb" id="1_x46uj"]
+
+[node name="tower-hexagon-roof2" instance=ExtResource("1_x46uj")]

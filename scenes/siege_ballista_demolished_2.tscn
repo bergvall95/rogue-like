@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dse3bg5m4vndu"]
+
+[ext_resource type="PackedScene" uid="uid://b06g25xn62vsl" path="res://GLB format/siege-ballista-demolished.glb" id="1_noywu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m312e"]
+size = Vector3(1.5, 0.5, 1.5)
+
+[node name="siege-ballista-demolished2" instance=ExtResource("1_noywu")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="siege-ballista-demolished" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="siege-ballista-demolished/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106745, 0.262361, 0)
+shape = SubResource("BoxShape3D_m312e")

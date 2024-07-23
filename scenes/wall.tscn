@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://42sad4wniitq"]
+
+[ext_resource type="Texture2D" uid="uid://caxl5jjtbugh1" path="res://textures/696.jpg" id="1_3heod"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewt35"]
+albedo_texture = ExtResource("1_3heod")
+
+[node name="Wall" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -8, 15, -1)
+material_override = SubResource("StandardMaterial3D_ewt35")
+snap = 0.1
+size = Vector3(100, 30, 100)

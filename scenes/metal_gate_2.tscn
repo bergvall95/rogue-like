@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsjn0aakckhq"]
+
+[ext_resource type="PackedScene" uid="uid://b3rpk8u8ur17" path="res://GLB format/metal-gate.glb" id="1_4f0kc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nokcp"]
+points = PackedVector3Array(-0.00672211, -0.00579447, -0.318588, 0.0357, 0.616184, 0.3193, 0.0157, 0.72008, 0.327325, -0.0183076, 0.0289813, 0.330347, -0.0414944, 0.643111, -0.353394, 0.0357, 0.616184, -0.319167, -0.0414944, 0.643111, 0.353528, 0.0357, 0.197649, 0.3193, -0.0414944, 0.179628, -0.353394, 0.0357, 0.197649, -0.319167, -0.0414944, 0.179628, 0.353528, -0.0183076, 0.735894, -0.341769, 0.0164409, 0.0174378, 0.330347, 0.0164409, 0.0174378, -0.330213, -0.0183076, 0.735894, 0.341903, 0.0157, 0.72008, -0.327192, 0.0275595, 0.182667, -0.3476, 0.0275485, 0.182737, 0.3476, 0.00485544, -0.00579447, 0.318721, -0.0183076, 0.0289813, -0.330213, -0.00672211, -0.00579447, 0.318721, 0.00485544, -0.00579447, -0.318588, -0.0183076, 0.0753731, -0.341769, -0.0183076, 0.0753731, 0.341903)
+
+[node name="metal-gate2" instance=ExtResource("1_4f0kc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="metal-gate" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="metal-gate/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_nokcp")
