@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://df6xljlydeorw"]
+
+[ext_resource type="PackedScene" uid="uid://sfgjbb8fc544" path="res://GLB format/tower-hexagon-top-wood.glb" id="1_cxsmn"]
+
+[node name="tower-hexagon-top-wood2" instance=ExtResource("1_cxsmn")]

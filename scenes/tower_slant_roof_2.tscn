@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dscwst6ucp5i2"]
+
+[ext_resource type="PackedScene" uid="uid://dal76yhrivr4b" path="res://GLB format/tower-slant-roof.glb" id="1_5wc3l"]
+
+[node name="tower-slant-roof2" instance=ExtResource("1_5wc3l")]

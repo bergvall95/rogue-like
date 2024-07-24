@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3qxcqljqa2og"]
+
+[ext_resource type="PackedScene" uid="uid://bhivjc77qydp4" path="res://GLB format/stairs-stone-square.glb" id="1_fxy4x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oe66o"]
+points = PackedVector3Array(-0.11625, 0, -0.4095, -0.11625, 0.056228, -0.4095, 0.116249, 0, -0.4095, -0.11625, 0, 0.4095, 0.116249, 0.056228, -0.4095, -0.11625, 0.224978, -0.20483, 0.116249, 0, 0.4095, -0.11625, 0.675, 0.4095, 0.116249, 0.224978, -0.20483, -0.11625, 0.675, 0.341197, 0.116249, 0.675, 0.4095, 0.116249, 0.675, 0.341197)
+
+[node name="stairs-stone-square2" instance=ExtResource("1_fxy4x")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_oe66o")

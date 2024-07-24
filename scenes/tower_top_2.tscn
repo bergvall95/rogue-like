@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0tn8hn814njg"]
+
+[ext_resource type="PackedScene" uid="uid://jexn7ibov60o" path="res://GLB format/tower-top.glb" id="1_7bh1m"]
+
+[node name="tower-top2" instance=ExtResource("1_7bh1m")]

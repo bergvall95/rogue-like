@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmbt563vrxcoa"]
+
+[ext_resource type="PackedScene" uid="uid://bcj60nvrwswrx" path="res://GLB format/siege-catapult-demolished.glb" id="1_wdm6y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42gfo"]
+size = Vector3(1.5, 0.3, 1.5)
+
+[node name="siege-catapult-demolished2" instance=ExtResource("1_wdm6y")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="siege-catapult-demolished" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="siege-catapult-demolished/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156589, 0.131498, 0.0828948)
+shape = SubResource("BoxShape3D_42gfo")

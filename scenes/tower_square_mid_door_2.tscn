@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqjfoy6ykodfq"]
+
+[ext_resource type="PackedScene" uid="uid://v8xnheqfgbir" path="res://GLB format/tower-square-mid-door.glb" id="1_wxbwm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1b1sc"]
+points = PackedVector3Array(-0.465, 0.000679343, -0.465, 0.465, 1.00949, 0.465, 0.464841, 1.00932, -0.465, 0.465, 0.000507197, 0.465, -0.465, 1.00932, 0.464841, 0.464841, 0.000679311, -0.465, -0.465, 1.00932, -0.465, -0.465, 0.000679343, 0.464841)
+
+[node name="tower-square-mid-door2" instance=ExtResource("1_wxbwm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_1b1sc")

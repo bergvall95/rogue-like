@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccblxi77aj1me"]
+
+[ext_resource type="PackedScene" uid="uid://n8kige4tca7b" path="res://GLB format/tower-square-base-color.glb" id="1_uvt8w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83q2q"]
+points = PackedVector3Array(0.462465, 1.01, 0.462465, -0.5, 0.000127236, -0.5, -0.5, 0.000127236, 0.493968, 0.494094, 0, 0.494094, 0.493968, 0.000127236, -0.5, -0.465, 1.00621, -0.465, -0.465, 1.00621, 0.458968, 0.458968, 1.00621, -0.465, 0.482207, 0.366425, -0.472754, -0.472754, 0.366425, 0.482207, -0.488547, 0.335631, -0.488547, -0.488547, 0.335631, 0.482515, 0.482515, 0.335631, -0.488547)
+
+[node name="tower-square-base-color2" instance=ExtResource("1_uvt8w")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tower-square-base-color" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower-square-base-color/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_83q2q")
