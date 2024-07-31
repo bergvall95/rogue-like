@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1b2guivj2q30"]
+
+[ext_resource type="Script" path="res://exp_orb.gd" id="1_a033m"]
+[ext_resource type="PackedScene" uid="uid://tnnn3nwbtln" path="res://GLB format/bottle.glb" id="2_8uxis"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_353ag"]
+radius = 0.478317
+
+[node name="SpeedBottle" type="Area3D" groups=["loot"]]
+script = ExtResource("1_a033m")
+
+[node name="SpeedJuice" parent="." instance=ExtResource("2_8uxis")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453871, 0)
+shape = SubResource("SphereShape3D_353ag")

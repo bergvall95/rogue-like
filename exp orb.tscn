@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cte28ti1nmnbk"]
+
+[ext_resource type="PackedScene" uid="uid://tnnn3nwbtln" path="res://GLB format/bottle.glb" id="1_31ce3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_353ag"]
+radius = 1.62776
+
+[node name="Area3D" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_353ag")
+
+[node name="SpeedJuice" parent="CollisionShape3D" instance=ExtResource("1_31ce3")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ffql15mo0aj"]
+[gd_scene load_steps=14 format=3 uid="uid://c3ffql15mo0aj"]
 
 [ext_resource type="Script" path="res://player/fps_controller.gd" id="1_pgc1p"]
 [ext_resource type="Material" path="res://player/player.tres" id="2_gldw4"]
@@ -97,6 +97,12 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nlt5"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1i46e"]
+radius = 1.6528
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fybvk"]
+radius = 1.67183
+
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "animation_player", "CROUCH_SHAPECAST")]
 script = ExtResource("1_pgc1p")
 TOGGLE_CROUCH = false
@@ -191,4 +197,18 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="GrabArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13143, 0.0349149)
+shape = SubResource("SphereShape3D_1i46e")
+
+[node name="CollectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12496, 0)
+shape = SubResource("SphereShape3D_fybvk")
+
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

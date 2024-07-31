@@ -138,3 +138,15 @@ func set_movement_speed(state : String):
 			_speed = SPEED_DEFAULT
 		"crouching":
 			_speed = SPEED_CROUCH
+
+
+
+func _on_grab_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+
+func _on_collect_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("loot"):
+		var gem_exp = area.collect()
