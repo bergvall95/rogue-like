@@ -1,0 +1,103 @@
+[gd_scene load_steps=21 format=3 uid="uid://c5fqgblruprjf"]
+
+[ext_resource type="Terrain3DStorage" uid="uid://cph3yci837gme" path="res://Terrain3DStorag.res" id="1_ppiow"]
+[ext_resource type="Texture2D" uid="uid://s5nl7h1e7qaa" path="res://textures/terrain/grass textures/grass_albedo_height.png" id="2_q14f1"]
+[ext_resource type="Texture2D" uid="uid://b2xw8sllke4k0" path="res://textures/terrain/grass textures/grass_normal_roughness.png" id="3_pd175"]
+[ext_resource type="Texture2D" uid="uid://eyl85xi70312" path="res://textures/terrain/cobblestone textures/pavement_albedo_height.png" id="4_pgoqn"]
+[ext_resource type="Texture2D" uid="uid://birsumliwaxqd" path="res://textures/terrain/cobblestone textures/pavement_normal_roughness.png" id="5_01ro3"]
+[ext_resource type="Texture2D" uid="uid://cqsscshfk2oya" path="res://textures/terrain/rock textures/rock_albedo_height.png" id="6_r400a"]
+[ext_resource type="Texture2D" uid="uid://cm366s7baunb1" path="res://textures/terrain/rock textures/rock_normal_roughness.png" id="7_m2bva"]
+[ext_resource type="PackedScene" uid="uid://c3ffql15mo0aj" path="res://player/fps_controller.tscn" id="8_4ddkr"]
+[ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://textures/skies/WE_test.tscn" id="10_16jer"]
+[ext_resource type="PackedScene" uid="uid://d1b2guivj2q30" path="res://speed_bottle.tscn" id="10_oki1o"]
+
+[sub_resource type="Gradient" id="Gradient_tllcq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4w8yt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qga8n"]
+height = 510
+seamless = true
+color_ramp = SubResource("Gradient_tllcq")
+noise = SubResource("FastNoiseLite_4w8yt")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_o4q8t"]
+_shader_parameters = {
+"auto_base_texture": 2,
+"auto_height_reduction": 0.1,
+"auto_overlay_texture": 0,
+"auto_slope": 1.0,
+"blend_sharpness": 0.504,
+"dual_scale_far": 170.0,
+"dual_scale_near": 100.0,
+"dual_scale_reduction": 0.893,
+"dual_scale_texture": 0,
+"height_blending": true,
+"macro_variation1": Color(0.819008, 0.873241, 0.922291, 1),
+"macro_variation2": Color(0.751291, 0.922824, 0.567695, 1),
+"noise1_angle": 0.56,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.09,
+"noise2_scale": 0.214,
+"noise3_scale": 0.085,
+"noise_texture": SubResource("NoiseTexture2D_qga8n"),
+"tri_scale_reduction": 0.001,
+"vertex_normals_distance": 128.0
+}
+world_background = 0
+texture_filtering = 1
+auto_shader = true
+dual_scaling = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lc2p"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_3kpwh"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_7lc2p")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_t5y0q"]
+name = "Grass"
+albedo_texture = ExtResource("2_q14f1")
+normal_texture = ExtResource("3_pd175")
+uv_scale = 0.01
+detiling = 1.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_v4y4b"]
+name = "Pavement"
+id = 1
+albedo_texture = ExtResource("4_pgoqn")
+normal_texture = ExtResource("5_01ro3")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_enn4l"]
+name = "Rock"
+id = 2
+albedo_texture = ExtResource("6_r400a")
+normal_texture = ExtResource("7_m2bva")
+uv_scale = 0.01
+detiling = 1.0
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_gyyjv"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_3kpwh")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_t5y0q"), SubResource("Terrain3DTextureAsset_v4y4b"), SubResource("Terrain3DTextureAsset_enn4l")])
+
+[node name="World" type="Node3D"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+storage = ExtResource("1_ppiow")
+material = SubResource("Terrain3DMaterial_o4q8t")
+assets = SubResource("Terrain3DAssets_gyyjv")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("8_4ddkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -746.394, 9.00243, -590.551)
+MOUSE_SENSITIVITY = 0.5
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("10_16jer")]
+
+[node name="SpeedBottle" parent="." instance=ExtResource("10_oki1o")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -716.883, 3.20775, -600.804)
