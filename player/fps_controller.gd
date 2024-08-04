@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var SPEED_DEFAULT : float = 5.0
 @export var SPEED_CROUCH : float = 2.0
+@export var SPEED_SPRINT : float = 8.0 
 @export var TOGGLE_CROUCH : bool = true
 @export var JUMP_VELOCITY : float = 4.5
 @export_range(5, 10, 0.1) var CROUCH_SPEED : float = 7.0
@@ -11,6 +12,13 @@ extends CharacterBody3D
 @export var CAMERA_CONTROLLER : Camera3D
 @export var animation_player: AnimationPlayer
 @export var CROUCH_SHAPECAST : Node3D
+@export var BOB_FREQ = 2.0
+@export var BOB_AMP= 0.1
+# FOV variables
+@export var BASE_FOV = 75.0
+const FOV_CHANGE = 1.5
+@onready var camera = $CameraController/Camera3D
+
 
 var _speed : float
 var _mouse_input : bool = false
@@ -19,7 +27,7 @@ var _tilt_input : float
 var _mouse_rotation : Vector3
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
-
+var t_bob= 0.0
 var _is_crouching : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -94,14 +102,24 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+	if Input.is_action_pressed('sprint'):
+		_speed = SPEED_SPRINT
+	else: 
+		_speed = SPEED_DEFAULT
+		
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	camera.transform.origin
 	if direction:
 		velocity.x = direction.x * _speed
 		velocity.z = direction.z * _speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, _speed)
 		velocity.z = move_toward(velocity.z, 0, _speed)
-
+	
+	#FOV
+	var velocity_clamped = clamp(velocity.length(), 0.5, SPEED_SPRINT * 2)
+	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	move_and_slide()
 
 func toggle_crouch():
@@ -146,6 +164,12 @@ func _on_grab_area_area_entered(area: Area3D) -> void:
 		area.target = self
 
 
+
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ) * BOB_AMP
+	return pos
 
 func _on_collect_area_area_entered(area: Area3D) -> void:
 	if area.is_in_group("loot"):

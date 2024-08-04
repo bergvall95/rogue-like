@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://c3ffql15mo0aj"]
 
 [ext_resource type="Script" path="res://player/fps_controller.gd" id="1_pgc1p"]
-[ext_resource type="Material" path="res://player/player.tres" id="2_gldw4"]
+[ext_resource type="Material" uid="uid://b4gwd5h7ixvct" path="res://player/player.tres" id="2_gldw4"]
 [ext_resource type="Script" path="res://player/Reticle.gd" id="3_btdil"]
 [ext_resource type="Theme" uid="uid://tjj52fx0qcg3" path="res://utilities/debug.tres" id="4_458w1"]
 [ext_resource type="Script" path="res://utilities/debug.gd" id="5_p7thd"]
@@ -122,6 +122,7 @@ mesh = SubResource("CapsuleMesh_6tv51")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
+current = true
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
 update_mode = 1

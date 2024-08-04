@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://bfoe1cmt5ssyg" path="res://GLB format/flag-banner-long.glb" id="1_a74gr"]
 
 [node name="flag-banner-long2" instance=ExtResource("1_a74gr")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
